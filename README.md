@@ -16,7 +16,7 @@ Chapter 21 covers the following :
 data to create model objects. 
 - Parsing JSON
 - Using the UIWebView class to display web content
-
+- the dispatch_async function for submitting blocks to a dispatch queue
 
 -----------------------------------
 Tagging Conventions: 
