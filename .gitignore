@@ -1,0 +1,4 @@
+#ignore custom user data
+NerdFeed.xcodeproj/project.xcworkspace
+NerdFeed.xcodeproj/xcuserdata
+

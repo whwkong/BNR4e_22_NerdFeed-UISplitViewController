@@ -19,6 +19,7 @@
 		27FCC28019546DF800361D62 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FCC26819546DF800361D62 /* UIKit.framework */; };
 		27FCC28819546DF800361D62 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27FCC28619546DF800361D62 /* InfoPlist.strings */; };
 		27FCC28A19546DF800361D62 /* NerdFeedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FCC28919546DF800361D62 /* NerdFeedTests.m */; };
+		27FCC2951954704100361D62 /* BNRCoursesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FCC2941954704100361D62 /* BNRCoursesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		27FCC28519546DF800361D62 /* NerdFeedTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NerdFeedTests-Info.plist"; sourceTree = "<group>"; };
 		27FCC28719546DF800361D62 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27FCC28919546DF800361D62 /* NerdFeedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NerdFeedTests.m; sourceTree = "<group>"; };
+		27FCC2931954704100361D62 /* BNRCoursesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRCoursesViewController.h; sourceTree = "<group>"; };
+		27FCC2941954704100361D62 /* BNRCoursesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRCoursesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 				27FCC27419546DF800361D62 /* BNRAppDelegate.m */,
 				27FCC27619546DF800361D62 /* Images.xcassets */,
 				27FCC26B19546DF800361D62 /* Supporting Files */,
+				27FCC2931954704100361D62 /* BNRCoursesViewController.h */,
+				27FCC2941954704100361D62 /* BNRCoursesViewController.m */,
 			);
 			path = NerdFeed;
 			sourceTree = "<group>";
@@ -242,6 +247,7 @@
 			files = (
 				27FCC27119546DF800361D62 /* main.m in Sources */,
 				27FCC27519546DF800361D62 /* BNRAppDelegate.m in Sources */,
+				27FCC2951954704100361D62 /* BNRCoursesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
