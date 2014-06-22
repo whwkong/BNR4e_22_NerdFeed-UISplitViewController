@@ -18,10 +18,3 @@ data to create model objects.
 - Using the UIWebView class to display web content
 - the dispatch_async function for submitting blocks to a dispatch queue
 
------------------------------------
-Tagging Conventions: 
-
-Commits that correspond to the completion of a chapter are tagged 0.4.x, 
-where x is the chapter number, and 4 represents the 4th edition of BNR. 
-
------------------------------------

@@ -9,7 +9,7 @@
 #import "BNRCoursesViewController.h"
 #import "BNRWebViewController.h"
 
-@interface BNRCoursesViewController()
+@interface BNRCoursesViewController() <NSURLSessionDataDelegate>
 @property (nonatomic) NSURLSession *session;
 @property (nonatomic, copy) NSArray *courses;
 @end
@@ -26,7 +26,7 @@
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
         
         _session = [NSURLSession sessionWithConfiguration:config
-                                                 delegate:nil
+                                                 delegate:self
                                             delegateQueue:nil];
         
         [self fetchFeed];
@@ -74,11 +74,11 @@
                                          animated:YES];
 }
 
-#pragma mark -
+#pragma mark - URL session handlers
 - (void)fetchFeed
 {
-    NSString *requestString = @"http://bookapi.bignerdranch.com/courses.json";
-    NSURL *url = [NSURL URLWithString:requestString];
+    NSString *privateRequestString = @"https://bookapi.bignerdranch.com/private/courses.json";
+    NSURL *url = [NSURL URLWithString:privateRequestString];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     
     NSURLSessionDataTask *dataTask = [self.session dataTaskWithRequest:req
@@ -95,6 +95,16 @@
                                           });
                                       }];
     [dataTask resume];
+}
+
+// The task has received a request specific authentication challenge.
+- (void) URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
+    didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler
+{
+    NSURLCredential *cred = [NSURLCredential credentialWithUser:@"BigNerdRanch"
+                                                       password:@"AchieveNerdvana"
+                                                    persistence:NSURLCredentialPersistenceForSession];
+    completionHandler(NSURLSessionAuthChallengeUseCredential, cred);
 }
 
 @end
