@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BNRWebViewController : UIViewController
+@interface BNRWebViewController : UIViewController <UISplitViewControllerDelegate>
 
 @property (nonatomic) NSURL *URL;
 

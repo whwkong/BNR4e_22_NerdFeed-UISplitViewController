@@ -10,7 +10,7 @@
 
 @implementation BNRWebViewController
 
-#pragma mark -
+#pragma mark - View lifecycle
 - (void)loadView
 {
     UIWebView *webView = [[UIWebView alloc] init];
@@ -19,12 +19,37 @@
     self.view = webView;
 }
 
+#pragma mark - Accessors
 - (void)setURL:(NSURL *)URL
 {
     _URL = URL;
     if (_URL) {
         NSURLRequest *req = [NSURLRequest requestWithURL:_URL];
         [(UIWebView *)self.view loadRequest:req];
+    }
+}
+
+#pragma mark - UISplitViewControllerDelegate methods
+- (void)splitViewController:(UISplitViewController *)svc
+     willHideViewController:(UIViewController *)aViewController
+          withBarButtonItem:(UIBarButtonItem *)barButtonItem
+       forPopoverController:(UIPopoverController *)pc
+{
+    // if bar button item does not have a title, it will not appear at all
+    barButtonItem.title = @"Courses";
+    
+    // take this bar button item and put it on the left side of nav item
+    self.navigationItem.leftBarButtonItem = barButtonItem;
+}
+
+- (void)splitViewController:(UISplitViewController *)svc
+     willShowViewController:(UIViewController *)aViewController
+  invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    // remove bar button item from navigation item
+    // double check that it is the correct button (insanity check)
+    if (barButtonItem == self.navigationItem.leftBarButtonItem) {
+        self.navigationItem.leftBarButtonItem = nil;
     }
 }
 

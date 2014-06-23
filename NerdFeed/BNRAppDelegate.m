@@ -20,10 +20,29 @@
     BNRCoursesViewController *cvc = [[BNRCoursesViewController alloc] initWithStyle:UITableViewStylePlain];
     
     UINavigationController *masterNav = [[UINavigationController alloc] initWithRootViewController:cvc];
-    self.window.rootViewController = masterNav;
     
     BNRWebViewController *wvc = [[BNRWebViewController alloc] init];
     cvc.webViewController = wvc;
+    
+    // check that we're running on an iPad
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        
+        // webViewController must be in nav controller
+        UINavigationController *detailNav = [[UINavigationController alloc] initWithRootViewController:wvc];
+        
+        UISplitViewController *svc = [[UISplitViewController alloc] init];
+        
+        // set the delegate of the split view controller to the detail VC
+        svc.delegate = wvc;
+        
+        svc.viewControllers = @[masterNav, detailNav];
+        
+        // set the root view controller of the window to the split view controller
+        self.window.rootViewController = svc;
+    } else {
+        // On non-iPad devices, just use nav controller
+        self.window.rootViewController = masterNav;
+    }
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
